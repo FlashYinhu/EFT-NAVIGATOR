@@ -6,7 +6,10 @@
     <parent>
         <groupId>com.yinhu</groupId>
         <artifactId>EFT-NAVIGATOR</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <!--默认处于开发中的快照版本-->
+        <version>1.0-SNAPSHOT</version> <!--会上传到snapshot仓库中-->
+<!--        <version>1.0</version>-->                <!--会上传到release仓库中-->
+<!--        <version>1.0-RELEASE</version>-->        <!--会上传到release仓库中-->
         <relativePath>../pom.xml</relativePath>
     </parent>
 

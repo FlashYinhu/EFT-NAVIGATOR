@@ -12,11 +12,28 @@
         <relativePath/>
     </parent>
 
+    <!--EFT-NAVIGATOR既是父工程 也是聚合工程-->
     <groupId>com.yinhu</groupId>
     <artifactId>EFT-NAVIGATOR</artifactId>
     <version>1.0-SNAPSHOT</version>
     <!--设置打包方式为pom包 默认为jar包-->
     <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!--版本锁定 自定义属性 引用属性-->
+        <lombok.version>1.18.24</lombok.version>
+        <jjwt.version>0.9.1</jjwt.version>
+    </properties>
+
+
+    <!--聚合其他模块-->
+    <modules>
+        <module>springboot-web-demo</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -34,11 +51,14 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -69,7 +89,7 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+<!--            <version>0.9.1</version>-->
         </dependency>
 
         <!--FastJSON-->
@@ -93,10 +113,21 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
+    <dependencyManagement>
+        <!--版本锁定-->
+        <!--统一管理依赖版本 注意 只是统一管理 引入依赖需要在 dependencies中指定 只是不需要再指定版本号了 -->
+        <dependencies>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <!--指定版本为0.9.1-->
+            <!--<version>0.9.1</version>-->
+                <version>${jjwt.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
 
 </project>
