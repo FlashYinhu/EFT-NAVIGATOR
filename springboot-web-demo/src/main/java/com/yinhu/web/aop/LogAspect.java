@@ -29,7 +29,7 @@ public class LogAspect {
     private OperateLogMapper operateLogMapper;
 
     /**
-     * 环绕通知 用来记录日志 基于注解切入
+     * 环绕通知 用来记录日志 基于注解作为切入点
      * @return
      */
     @Around("@annotation(com.yinhu.web.anno.Log)")
